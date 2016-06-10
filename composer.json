@@ -1,0 +1,19 @@
+{
+	"name": "salamtam/elasticsearch-loop-php",
+    "type": "vcs",
+    "authors": [
+        {
+            "name": "Patchara Suwanwanakul",
+            "email": "salamtam.p@gmail.com"
+        }
+    ],
+    "description": "for Looping data from Elasticsearch",
+    "require": {
+        "elasticsearch/elasticsearch": "^2.1"
+    },
+    "autoload": {
+      	"psr-4": {
+      		"ElasticsearchLoopPHP\\": "src/"
+      	}
+    }
+}
