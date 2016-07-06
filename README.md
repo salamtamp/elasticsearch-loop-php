@@ -8,7 +8,7 @@ for Looping data from Elasticsearch
 1. Install composer. `curl -s http://getcomposer.org/installer | php`
 
 2. Create composer.json containing:
-  ```
+  ```json
   {
       "require" : {
           "salamtam/elasticsearch-loop-php" : "^1.1"
@@ -22,7 +22,7 @@ for Looping data from Elasticsearch
 ##Example
 
 **Query**
-```
+```php
 require_once __DIR__ . "/vendor/autoload.php";
 
 use ElasticsearchLoopPHP\ElasticsearchLoop;
