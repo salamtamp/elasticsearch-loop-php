@@ -11,7 +11,7 @@ for Looping data from Elasticsearch
   ```json
   {
       "require" : {
-          "salamtam/elasticsearch-loop-php" : "^1.1"
+          "salamtam/elasticsearch-loop-php" : "^1.2"
       }
   }
   ```
