@@ -1,4 +1,5 @@
 <?php
+
 namespace ElasticsearchLoopPHP;
 use Elasticsearch\ClientBuilder;
 
@@ -6,9 +7,15 @@ class ElasticsearchLoop
 {
     private $client;
 
-	public function __construct($url, $user, $pass, $port="9200")
+	public function __construct($url, $user=null, $pass=null, $port="9200")
 	{
-        $this->client = $this->createElasticsearchClient([$user . ":" . $pass . "@" .  $url . ":" . $port]);
+        $host = '';
+        if (!is_null($user) && !is_null($pass)) {
+            $host .= $user . ":" . $pass . "@";
+        }
+        $host .= $url . ":" . $port;
+
+        $this->client = $this->createElasticsearchClient([$host]);
         return $this;
 	}
 
@@ -30,7 +37,7 @@ class ElasticsearchLoop
 		try {
 			$response = $this->client->search($params);
 		} catch (Exception $e) {
-			exit($e->getMessage() . "\n");
+			exit($e->getMessage() . PHP_EOL);
 		}
 
 		$callback($response);
@@ -39,8 +46,7 @@ class ElasticsearchLoop
 			$params['from'] += $params['size'];
 			$this->getElasticsearch($params, $callback);
 		} else {
-			echo "end process." . "\n";
+			echo "End process" . PHP_EOL;
 		}
 	}
 }
-
