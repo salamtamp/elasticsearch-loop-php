@@ -56,7 +56,7 @@ $client->getElasticsearch($params, $callback);
 
 ##Example 2
 
-**Query with basic authentication **
+**Query with basic authentication**
 ```php
 require_once __DIR__ . "/vendor/autoload.php";
 
