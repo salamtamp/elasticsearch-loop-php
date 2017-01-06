@@ -7,13 +7,18 @@ class ElasticsearchLoop
 {
     private $client;
 
-	public function __construct($url, $user=null, $pass=null, $port="9200")
+	public function __construct($url, $user=null, $pass=null, $port=null)
 	{
         $host = '';
         if (!is_null($user) && !is_null($pass)) {
             $host .= $user . ":" . $pass . "@";
         }
-        $host .= $url . ":" . $port;
+
+        if (!is_null($port)) {
+         	$host .= $url . ":" . $port;
+        } else {
+        	$host .= $url;
+        }
 
         $this->client = $this->createElasticsearchClient([$host]);
         return $this;
