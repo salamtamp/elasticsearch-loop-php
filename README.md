@@ -43,7 +43,7 @@ $params = [
 
 /* callback function */
 $callback = function($response) {
-    foreach ($response as $item) {
+    foreach ($response['hits']['hits'] as $item) {
   		  print_r($item);
   	}
 };
@@ -81,7 +81,7 @@ $params = [
 
 /* callback function */
 $callback = function($response) {
-    foreach ($response as $item) {
+    foreach ($response['hits']['hits'] as $item) {
         print_r($item);
     }
 };
