@@ -1,7 +1,9 @@
 <?php
 
 namespace ElasticsearchLoopPHP;
-use Elasticsearch\ClientBuilder;
+
+use \Elasticsearch\ClientBuilder;
+use \Exception;
 
 class ElasticsearchLoop
 {
@@ -9,18 +11,23 @@ class ElasticsearchLoop
 
 	public function __construct($url, $user=null, $pass=null, $port=null)
 	{
-        $host = '';
-        if (!is_null($user) && !is_null($pass)) {
-            $host .= $user . ":" . $pass . "@";
-        }
+		if (is_array($url)) {
+			$this->client = $this->createElasticsearchClient($url);
+		} else {
+			$host = '';
+			if (!is_null($user) && !is_null($pass)) {
+				$host .= $user . ":" . $pass . "@";
+			}
 
-        if (!is_null($port)) {
-         	$host .= $url . ":" . $port;
-        } else {
-        	$host .= $url;
-        }
+			if (!is_null($port)) {
+				$host .= $url . ":" . $port;
+			} else {
+				$host .= $url;
+			}
 
-        $this->client = $this->createElasticsearchClient([$host]);
+			$this->client = $this->createElasticsearchClient([$host]);
+		}
+
         return $this;
 	}
 
